@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"1/brackets"
+	"1/utility"
 )
 
 func main() {
@@ -14,19 +15,12 @@ func main() {
 	}
 
 	FileName := os.Args[1]
-
-	file, err := os.Open(FileName)
+	content, err := utility.GetData(FileName)
 	if err != nil {
-		fmt.Println("Error accessing file: ", err)
-		return
-	}
-	defer file.Close()
-
-	content, err := os.ReadFile(FileName)
-	if err != nil {
-		fmt.Println("Error Reading file: ", err)
+		fmt.Println(err)
 		return
 	}
 
 	fmt.Println(brackets.SortBrackets(string(content)))
 }
+
