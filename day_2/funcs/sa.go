@@ -1,6 +1,6 @@
 package funcs
 
-func SurfaceArea(cup []int) int {
+func WrappPaper(cup []int) int {
 	l, w, h := cup[0], cup[1], cup[2]
 
 	sa := (2*l*w + 2*h*w + 2*h*l)
@@ -13,7 +13,7 @@ func SurfaceArea(cup []int) int {
 func TotalSa(Jug [][]int) int {
 	var totalSa int
 	for _, cup := range Jug {
-		totalSa += SurfaceArea(cup)
+		totalSa += WrappPaper(cup)
 	}
 	return totalSa
 }
