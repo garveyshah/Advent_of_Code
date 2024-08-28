@@ -22,14 +22,8 @@ func main() {
 	}
 
 	Jug := funcs.DecodeData(data)
-	fmt.Println(Jug)
 	totalSa := funcs.TotalSa(Jug)
-	fmt.Println("Total SA ==", totalSa)
-	// l, w, h := 2, 3, 4
-	// l1, w2, h3 := 1, 1, 10
-
-	// TFeet := funcs.SurfaceArea(l, w, h)
-	// TFeet2 := funcs.SurfaceArea(l1, w2, h3)
-	// fmt.Println("instance A:= ", TFeet)
-	// fmt.Println("Instance B := ", TFeet2)
+	ribbon := funcs.Ribbon(Jug)
+	fmt.Println("Total Wrapping paper ==", totalSa)
+	fmt.Println("Total Ribbon == ", ribbon)
 }
