@@ -4,12 +4,9 @@ func SurfaceArea(cup []int) int {
 	l, w, h := cup[0], cup[1], cup[2]
 
 	sa := (2*l*w + 2*h*w + 2*h*l)
+	m := Min((l * w), (h * w), (h * l))
 
-	if (l == w) || (l == h) || (w == h) {
-		sa += 1
-	} else {
-		sa += 6
-	}
+	sa += m
 	return sa
 }
 
@@ -19,4 +16,17 @@ func TotalSa(Jug [][]int) int {
 		totalSa += SurfaceArea(cup)
 	}
 	return totalSa
+}
+
+func Min(a, b, c int) int {
+	min := a
+
+	if b < min {
+		min = b
+	}
+
+	if c < min {
+		min = c
+	}
+	return min
 }
