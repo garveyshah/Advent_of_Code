@@ -13,9 +13,12 @@ func main() {
 		fmt.Println("Usage : go run . <filename>\nExample: go run . data.txt")
 		return
 	}
-	data, err:= utils.Reader(os.Args[1])
+	data, err := utils.Reader(os.Args[1])
 	if err != nil {
 		fmt.Println("Error: ", err)
+		return
 	}
-	fmt.Println("Houses gifted are : ", funcs.HouseTracker(data))
+
+	gifted := funcs.HouseTracker(data)
+	fmt.Println("Houses gifted are : ", gifted)
 }
