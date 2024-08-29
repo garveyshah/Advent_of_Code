@@ -20,5 +20,7 @@ func main() {
 	}
 
 	gifted := funcs.HouseTracker(data)
-	fmt.Println("Houses gifted are : ", gifted)
+	gifted2 := funcs.HouseTracker2(data)
+	fmt.Println("Houses In Year \"1\" gifted are : ", gifted)
+	fmt.Println("Houses In Year \"2\" gifted are : ", gifted2)
 }

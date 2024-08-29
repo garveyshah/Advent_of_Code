@@ -22,3 +22,23 @@ func TestHouseTracker(t *testing.T) {
 		})
 	}
 }
+
+// TestHouseTracker2 test
+func TestHouseTracker2(t *testing.T) {
+	tt := []struct {
+		name  string
+		input string
+		want  int
+	}{
+		{"Test 1", "^v", 3},
+		{"Test 2", "^>v<", 3},
+		{"Test 3", "^v^v^v^v^v", 11},
+	}
+
+	for _, tc := range tt {
+		got := HouseTracker2(tc.input)
+		if got != tc.want {
+			t.Errorf("%q Failed: for %q got %v, want %v", tc.name, tc.input,  got, tc.want)
+		}
+	}
+}
