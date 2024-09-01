@@ -1,6 +1,7 @@
 package funcs
 
-func MD5(s string) int {
+func MD5(s string) string {
+	return "Godwin"
 }
 
 //
