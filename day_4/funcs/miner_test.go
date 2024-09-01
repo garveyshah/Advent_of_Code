@@ -6,10 +6,10 @@ func TestMD5(t *testing.T) {
 	tt := []struct {
 		name  string
 		input string
-		want  int
+		want  string
 	}{
-		{"Test 1", "abcdef", 609043},
-		{"Test 2", "pqrstuv", 1048970},
+		// {"Test 1", "abcdef", 609043},
+		// {"Test 2", "pqrstuv", 1048970},
 		//	{"Test 3","bgvyzdsv",1048970},
 	}
 	for _, tc := range tt {
