@@ -13,6 +13,6 @@ func main() {
 		return
 	}
 
-	code := funcs.MD5(os.Args[1])
-	fmt.Println("The answer for " + os.Args[1] + " is : " + code)
+	code := funcs.AdvCoinMiner(os.Args[1])
+	fmt.Println("The answer for "+os.Args[1]+" is : ", code)
 }
