@@ -52,41 +52,61 @@ func TestPairCounter(t *testing.T) {
 			t.Errorf("for input %q Failed - got %v want %v", tc.intput, got, tc.want)
 		}
 	}
-}
+ }
 
-func TestOverlapChecker(t *testing.T) {
+// func TestOverlapChecker(t *testing.T) {
+// 	tt := []struct {
+// 		input string
+// 		want  bool
+// 	}{
+// 		{"aabbbaa", false},
+// 		{"aabaa", true},
+// 		{"abccba", true},
+// 	}
+
+// 	for _, tc := range tt {
+// 		got := overlapChecker(tc.input)
+
+// 		if got != tc.want {
+// 			t.Fatalf("for input %q Failed - got %v, want %v", tc.input, got, tc.want)
+// 		}
+// 	}
+// }
+
+func TestintervaledPair(t *testing.T) {
 	tt := []struct {
 		input string
 		want  bool
 	}{
-		{"aabbbaa", false},
-		{"aabaa", true},
+		{"xyx", true},
+		{"aaa", true},
+		{"aay", false},
+		{"abccba", false},
 	}
 
 	for _, tc := range tt {
-		got := overlapChecker(tc.input)
+		got := intervaledPair(tc.input)
 
 		if got != tc.want {
-			t.Fatalf("for input %q Failed - got %v, want %v", tc.input, got, tc.want)
+			t.Errorf("for input %q, got %v, want %v", tc.input, got, tc.want)
 		}
 	}
 }
 
-func TestTriples(t *testing.T) {
-	tt := []struct {
-	input string
-	want bool
+func TestCounter(t *testing.T) {
+	tests := []struct {
+		input                 []string
+		wantNaughty, wantNice int
 	}{
-		{"xyx", true},
-		{"aaa", true},
-		{"aay",false},
+		{[]string{"aabb", "abccba", "aaa", "abab"}, 0, 3},
+		{[]string{"abcdef", "xyzxyz", "aaaabb", "abcd"}, 0, 4},
+		{[]string{"xyx", "efe", "aaaa", "abacaba"}, 0, 4},
 	}
 
-	for _, tc := range tt {
-		got := triples(tc.input)
-
-		if got != tc.want {
-			t.Errorf("for input %q, got %v, want %v", tc.input, got, tc.want)
-		} 
+	for _, tc := range tests {
+		gotNaughty, gotNIce := Counter(tc.input)
+		if gotNaughty != tc.wantNaughty || gotNIce != tc.wantNice {
+			t.Errorf("Counter(%v) = (%v, %v), want (%v, %v)", tc.input, gotNaughty, gotNIce, tc.wantNaughty, tc.wantNice)
+		}
 	}
 }

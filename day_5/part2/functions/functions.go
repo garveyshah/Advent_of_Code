@@ -1,12 +1,8 @@
 package functions
 
-func isTriple(a, b, c byte) bool {
-	return a == b && b == c
-}
-
 func overlapChecker(s string) bool {
 	for i := 0; i < len(s)-2; i++ {
-		if isTriple(s[i], s[i+1], s[i+2]) {
+		if s[i] == s[i+1] && s[i+1] == s[i+2] {
 			return false
 		}
 	}
@@ -31,14 +27,11 @@ func pairCounter(s string) bool {
 	return false
 }
 
-func newNaughtyOrNice(s string) string {
-	if pairCounter(s) && overlapChecker(s) && triples(s) {
-		return "nice"
-	}
-	return "naughty"
+func IsNice(s string) bool {
+	return  pairCounter(s) && overlapChecker(s) && intervaledPair(s)
 }
 
-func triples(s string) bool {
+func intervaledPair(s string) bool {
 	for i := 0; i < len(s)-2; i++ {
 		if s[i] == s[i+2] {
 			return true
@@ -47,16 +40,3 @@ func triples(s string) bool {
 	return false
 }
 
-func Counter(str []string) (int, int) {
-	var Nccount, Ntcount int
-
-	for _, s := range str {
-		state := newNaughtyOrNice(s)
-		if state == "naughty" {
-			Nccount++
-		} else {
-			Ntcount++
-		}
-	}
-	return Nccount, Ntcount
-}

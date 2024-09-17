@@ -14,13 +14,20 @@ func main() {
 		return
 	}
 
-	data, err := funcs.Reader("../part1/test_data/" + os.Args[1])
+	data, err := funcs.Reader(os.Args[1])
 	if err != nil {
 		fmt.Println("Error : ", err)
 		return
 	}
 
-	Nice, Naughty := functions.Counter(data)
+	var count, val int
+	for _, word := range data {
+		if functions.IsNice(word) {
+			count++
+		} else {
+			val++
+		}
+	}
 
-	fmt.Println("Nice - ", Nice, "\n", "Naughty - ", Naughty)
+	fmt.Printf("Nice - %d\nNaughty - %d\n", count, val)
 }
